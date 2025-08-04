@@ -71,6 +71,10 @@
             justify-content: space-between;
         }
 
+        .addon-container.featured {
+            background: linear-gradient(120deg, #2ecc71, #27ae60);
+        }
+
         .addon-container:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
@@ -177,10 +181,11 @@
         }
 
         .addon-icon {
-            max-height: 108px;
-            max-width: 230px;
+            height: 108px;
+            width: 230px;
             border-radius: 6px;
-            border: 2px solid black;
+            border: 5px solid rgb(86, 86, 86);
+            background: rgb(50, 50, 50);
         }
 
         .addon-right {
@@ -553,8 +558,6 @@
                     <img src="https://cdn.iconscout.com/icon/free/png-256/free-discord-3691244-3073764.png?f=webp&w=128" alt="Discord Icon" class="discord-icon">
                     Discord Server
                 </a>
-                
-                
             </div>
             <h5 style="background: rgb(194, 194, 194); color: black; border-radius: 12px; padding: 5px;">URL: <a style="color: rgb(0, 102, 255);" target="_top" href="https://www.mcbeaddons.com">MCBEADDONS.COM</a></h5>
         </div>
@@ -591,6 +594,15 @@
 const uselink2 = false;
 const updateNeeded = false;
 
+function getAddonNameFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const addonParam = urlParams.get('addon');
+    if (addonParam) {
+        // Replace hyphens with spaces
+        return addonParam.replace(/-/g, ' ');
+    }
+    return null;
+}
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -603,21 +615,41 @@ function displayAddons(filteredAddons) {
     const addonsList = document.getElementById('addonsList');
     addonsList.innerHTML = ''; // Clear current addons
 
+    // Get addon name from URL
+    const featuredAddonName = getAddonNameFromURL();
+    let featuredAddon = null;
+    let otherAddons = filteredAddons;
+
+    // If there's a featured addon, find it and remove it from the main list
+    if (featuredAddonName) {
+        featuredAddon = filteredAddons.find(addon => addon.name === featuredAddonName);
+        otherAddons = filteredAddons.filter(addon => addon.name !== featuredAddonName);
+    }
+
     // Split addons into non-outdated and outdated
-    const nonOutdatedAddons = filteredAddons.filter(addon => !addon.outdated);
-    const outdatedAddons = filteredAddons.filter(addon => addon.outdated);
+    const nonOutdatedAddons = otherAddons.filter(addon => !addon.outdated);
+    const outdatedAddons = otherAddons.filter(addon => addon.outdated);
 
     // Shuffle each group
     shuffleArray(nonOutdatedAddons);
     shuffleArray(outdatedAddons);
 
-    // Combine the arrays: non-outdated first, then outdated
-    const sortedAddons = [...nonOutdatedAddons, ...outdatedAddons];
+    // Combine arrays: featured addon first (if exists), then non-outdated, then outdated
+    const sortedAddons = [
+        ...(featuredAddon ? [featuredAddon] : []),
+        ...nonOutdatedAddons,
+        ...outdatedAddons
+    ];
 
-    sortedAddons.forEach(addon => {
+    sortedAddons.forEach((addon, index) => {
         const addonContainer = document.createElement('div');
         addonContainer.className = 'addon-container';
         addonContainer.style.position = 'relative';
+
+        // Apply featured styling for the first addon if it matches the URL parameter
+        if (index === 0 && featuredAddon && addon.name === featuredAddonName) {
+            addonContainer.classList.add('featured');
+        }
 
         // Apply outdated styling if applicable
         if (addon.outdated) {
