@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCBE Addons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            padding: 0;
+            margin: 0;
+            font-family: 'Lexend', sans-serif;
+            background: linear-gradient(120deg, #2c3e50, #4ca1af);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 200, 255, 0.7)
+        }
+ 
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 200, 255, 0)
+        }
+
+        h1 {
+            box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3);
+            font-size: 22px;
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            background-color: black;
+            border-radius: 0 0 35px 35px;
+            text-align: center;
+            margin: 0;
+            border: 3px solid #5E5E5E;
+            padding: 25px 0 30px 0;
+            position: fixed;
+            width: 99.55%;
+            z-index: 9999999;
+        }
+
+        .addon-description {
+            font-size: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        
+        .addon-container {
+            background: linear-gradient(120deg, #2c3e50, #4ca1af);
+            border: 2px solid lightgray;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+            transition: transform 0.8s ease, box-shadow 2.3s ease;
+            animation: slideUp 2s ease-out;
+            min-width: 250px;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .addon-container:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .addon-header {
+            font-size: 20px;
+            text-align: center;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            color: white;
+            padding: 10px;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            background-color: #1abc9c;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: bounce 2s infinite;
+            width: 98%;
+            margin-left: -7px;
+        }
+
+        .download-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.6);
+        }
+
+        .download-button:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp2 {
+            from {
+                opacity: 0;
+                transform: translate(-50%, calc(-50% + 20px));
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .addon-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .addon-icon-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .addon-icon {
+            max-height: 108px;
+            max-width: 230px;
+            border-radius: 6px;
+            border: 2px solid black;
+        }
+
+        .addon-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .link-container {
+            background-color: rgba(94, 94, 94, 0.4);
+            padding: 1px;
+            border-radius: 6px;
+            border: 3px solid rgba(50, 50, 50, 0.1);
+            border: 3px solid #5E5E5E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .link-container:hover {
+            background-color: rgba(94, 94, 94, 0.8);
+            border: 3px solid rgba(0, 0, 0, 0.5);
+        }
+
+        .link-container p {
+            margin: 0 0 0px 0;
+            text-align: center;
+        }
+
+        .youtube-link, .discord-link {
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            background-color: rgba(10, 10, 10, 0.5);
+            margin: 2px;
+            padding: 2px 5px;
+        }
+
+        .youtube-link:hover, .discord-link:hover {
+            color: white;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .youtube-icon, .discord-icon {
+            width: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .addonsDisplay1, .addonsDisplay {
+            font-family: 'Lexend';
+            border: 5px solid darkgray;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            max-width: 100%;
+            overflow: hidden;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .video-button {
+            border: 4px solid darkorange;
+            background-color: orange;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 6px;
+            padding: 10px;
+            color: white;
+            display: none;
+            font-size: 20px;
+        }
+
+        .video-button:hover {
+            box-shadow: 0px 14px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .addon-description {
+            flex: 1;
+            font-size: 16px;
+            text-align: center;
+            margin-left: 10px;
+            border: 2px solid black;
+            height: 85px;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .download-button:active {
+            border-radius: 20px;
+            background-color: white;
+            color: black;
+            border: 2px solid gray;
+        }
+
+        h4 {
+            font-size: 10px;
+            font-family: Copperplate, cursive;
+            color: white;
+            background-color: rgba(0, 0, 139, 0.32);
+            border-radius: 6px;
+            border: 3px solid rgba(0, 0, 0, 0.324);
+            text-align: center;
+            margin: 20px auto;
+            padding: 4px 4px;
+            max-width: 190px;
+            position: fixed;
+            bottom: -20px;
+            right: 0px;
+            z-index: 9999999;
+        }
+
+        h6 {
+            border: 4px solid #525252;
+            background-color: black;
+            text-align: center;
+            font-family: 'Black Ops One', Impact, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 6px;
+            color: white;
+            font-size: 20px;
+        }
+
+        h7 {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 20px auto;
+            border: 3px solid #5E5E5E;
+            border-radius: 6px;
+            background-color: #757575;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .updateSite {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            background-color: rgba(10, 10, 10, 0.5);
+            margin: 2px;
+            padding: 2px 5px;
+        }
+
+        .updateSite:hover {
+            color: white;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .addon-container.outdated {
+            filter: grayscale(100%);
+            opacity: 1;
+        }
+
+        .addon-container.outdated .download-button {
+            background-color: #666;
+            cursor: not-allowed;
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        .addon-container.outdated .download-button:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        #infoMenu {
+            display: none;
+            background: linear-gradient(120deg, #2c3e50, #4ca1af);
+            width: 75%;
+            max-width: 500px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 5px;
+            color: black;
+            z-index: 999;
+            border: 2px solid lightgray;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+            transition: transform 0.8s ease, box-shadow 2.3s ease;
+            animation: slideUp2 2s ease-out;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding-bottom: 50px;
+        }
+
+        .infoTitle {
+            font-family: 'Lexend';
+            font-size: 20px;
+            text-align: center;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            color: white;
+            padding: 10px 0px 10px 60px;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+            margin-left: -25px;
+            width: 80%;
+            border: 0px solid white;
+            box-sizing: border-box;
+        }
+
+        .infoaddon-icon {
+            padding: 0 3%;
+            margin-top: 55px;
+            width: 90%;
+            border-radius: 20px;
+            height: 250px;
+        }
+
+        .infocloseButton {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 46px;
+            height: 46px;
+            border-radius: 10px 0px 10px 0px;
+            font-size: xx-large;
+            color: white;
+            border: 1px solid rgba(255, 100, 100, 0.7);
+            background: rgba(200, 40, 40, 0.95);
+            transition: transform 0.2s, background 0.2s;
+            z-index: 25;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .download-button2 {
+            justify-content: center;
+            align-items: center;
+            padding: 15px 10%;
+            border-radius: 8px;
+            background-color: #1abc9c;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounce 5s infinite;
+            width: 98%;
+        }
+
+        .download-button2:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.6);
+        }
+
+        .download-button2:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #043f66;
+            border-top: 2px solid #475569;
+            border-radius: 12px;
+        }
+
+        footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer hr {
+            border: 1px solid #475569;
+            margin: 0.5rem 0;
+        }
+
+        /* Grid layout for addons */
+        #addonsList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 300px);
+            gap: 20px;
+            justify-content: center;
+        }
+
+        #addonsh6 {
+            width: 85%;
+            max-width: 999999px;
+            background-color: rgb(28, 187, 205);
+            border: 4px solid #27b5b0;
+            text-align: center;
+            font-family: 'Black Ops One', Impact, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            padding: 0px 10px;
+        }
+
+        #addonsh6 h6 {
+            border: none;
+            border-bottom: 10px solid rgb(6, 102, 113);
+            background-color: rgb(15, 132, 145);
+            text-align: center;
+            font-family: 'Press Start 2P', sans-serif;
+            max-width: 90px;
+            margin: 1px;
+            padding: 10px 5px 5px 5px;
+            border-radius: 6px;
+            color: white;
+            font-size: x-small;
+            cursor: pointer;
+        }
+
+        #addonsh6 h6.active {
+            background-color: rgb(33, 200, 28);
+            border-bottom: 10px solid #229316;
+        }  
+
+        #addonsh6 h6:hover {
+            color: rgb(203, 203, 203);
+        }  
+
+        #addonsh6 h6:active {
+            color: rgb(0, 255, 102);
+        }  
+    </style>
+</head>
+<body>
+    <h1>Minecraft Bedrock Addons</h1>
+
+    <div class="content">
+        <div class="addonsDisplay1">
+            <br><br><br><br>
+            <h4>Last Updated: 08/01/2025<br>Supported Version: 1.21.94</h4>
+            <div class="link-container">
+                <a href="https://www.youtube.com/@Orzubek-1" target="_blank" class="button youtube-link">
+                    <img src="https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo.png" alt="YouTube Icon" class="youtube-icon">
+                    YouTube Channel
+                </a>
+                <a href="https://discord.com/invite/DBmetbGZVk" target="_blank" class="button discord-link">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/free-discord-3691244-3073764.png?f=webp&w=128" alt="Discord Icon" class="discord-icon">
+                    Discord Server
+                </a>
+            </div>
+        </div>
+        <div id="infoMenu"></div>
+        <div class="addonsDisplay">
+            <h6>Dwonload Information</h6>
+            <div id="outdated" class="video-button" style="border:4px solid rgba(200,0,0,1); background:rgba(250,0,0,1); padding:10px; align-items:center; text-align:center; justify-content:space-between;">
+                <img style="width:50px;" src="https://www.freeiconspng.com/thumbs/warning-icon-png/status-warning-icon-png-29.png">
+                <p style="margin:0px;">Some addons on this page aren't yet updated. Please wait for the creators to update them, or click the button here to update them yourself.</p><br>
+                <button style="width: 150px; height: 70px;" onclick="window.open('https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater', '_blank')" class="updateSite">McAddon Updater</button>
+            </div>
+            <div id="freenoads" class="video-button" style="padding:10px; align-items:center; text-align:center; justify-content:space-between;">
+                <p style="margin:0;">Clicking the download button will redirect you to an advertisement page. Be sure to read the instructions to open the downloaded file.  <p style="font-size: small;">(advertisement page and downloading takes 1-3mints)</p></p>
+                <a style="font-size: small; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" target="_blank" href="https://streamable.com/xbylyn">Having trouble? Watch a tutorial on how to download addon using ad link.</a>
+            </div>
+            <h7>After downloading any of the addons, make sure to enable "Beta APIs" in world settings.<hr style="width: 100%;">Join the discord server if you have any questions, comments, or suggestions.</h7>
+            <h5 id="addonsDisplay"></h5>
+            <div id="addonsh6">
+                <h6 class="active" data-filter="all">All</h6>
+                <h6 data-filter="addon">Addons</h6>
+                <h6 data-filter="script">Scripts</h6>
+                <h6 data-filter="world">Worlds</h6>
+            </div>
+            <div id="addonsList"></div>
+        </div>
+        <footer>
+            <a href="https://sites.google.com/view/minecraftcreatorhub" target="_blank">MCCH Main page</a><hr>
+            <a href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank">MCCH Addon Updater</a><hr>
+            <a href="https://sites.google.com/view/minecraftcreatorhub/menu/tools/scripter" target="_blank">MCCH Scripter (Create your own addon!)</a>
+        </footer>
+    </div>
+
+    <script>
+const uselink2 = false;
+const updateNeeded = false;
+
+const addons = [
+    {
+        "name": "2009AI",
+        "icon": "https://api.mcpedl.com/storage/submissions/128085/100/packicon_1-520x245.png",
+        "description": "",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/3uflhdi8wbewa/2009AI",
+        "downloadlink2": "https://www.mediafire.com/folder/3uflhdi8wbewa/2009AI",
+        types: ["addon"],
+        "outdated": false
+    },
+    {
+        "name": "Soft Kick Addon",
+        "icon": "https://i.ibb.co/MBP9Xsc/pack-icon.jpg",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/20nuz0xzrco2j/Softkick",
+        "downloadlink2": "https://www.mediafire.com/file/g8gdptw67h8wlst/SoftKick_MCV1-21-50.mcaddon/file",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Block Reach",
+        "icon": "https://api.mcpedl.com/storage/submissions/127782/100/screenshot-20250310-112421_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/ffmnoubt7dhqt/Block+Reach",
+        "downloadlink2": "https://www.mediafire.com/folder/ffmnoubt7dhqt/Block+Reach",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Advanced Chat And Name Ranks",
+        "icon": "https://api.mcpedl.com/storage/submissions/121654/100/screenshot-20241005-at-84538am_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/lfz0i487awyeh/Chat+And+Name+Ranks+Addon",
+        "downloadlink2": "https://rinku.me/RanksAddonMCV_1-21-30",
+        types: ["addon"],
+        "outdated": false
+    },
+    {
+        "name": "Admin Menu V5 | Easy to use",
+        "icon": "https://api.mcpedl.com/storage/submissions/116737/105/12312312321345456_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/jrtclpwwsltkc/Admin+MenuV5",
+        "downloadlink2": "https://lootdest.org/s?d396c03e",
+        types: ["addon"],
+        "outdated": false
+    },
+    {
+        "name": "Advanced Kills and Deaths Counter",
+        "icon": "https://api.mcpedl.com/storage/submissions/118684/100/photo20240715020759_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/0g6wumea10dqe/Kills+And+Deaths",
+        "downloadlink2": "https://loot-link.com/s?3a3f61b9",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Block Interaction Prevention",
+        "icon": "https://api.mcpedl.com/storage/submissions/119373/100/photo20240801010708_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/jbcno20009i71/Block+Interaction+Pervention",
+        "downloadlink2": "https://lootdest.org/s?3dea203e",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Chicken AntiCheat (Discontinued)",
+        "icon": "https://api.mcpedl.com/storage/submissions/118452/100/img4707_1-520x245.png",
+        "description": "This addon is broken and cannot be updated at all. This addon is also discontinued and will no longer be updated nor edited.",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/file/l8fhdbyt1p5gt8r/ChickenAnt_MCV1-21-44.mcaddon/file",
+        "downloadlink2": "https://loot-link.com/s?baeb75b1",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Entity Cps Tester",
+        "icon": "https://api.mcpedl.com/storage/submissions/118701/102/img4763_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/nov4u0jxitl8t/Cps+Tester",
+        "downloadlink2": "https://lootdest.org/s?3862364a",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Lock/Unlock Entity Interactions",
+        "icon": "https://api.mcpedl.com/storage/submissions/117964/100/img4509_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/y2jdiwixnsb18/Lockable+Entities",
+        "downloadlink2": "https://lootdest.com/s?94ca15a8",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Maze Generator Command",
+        "icon": "https://api.mcpedl.com/storage/submissions/117660/100/img4477_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/x8dpl0ly9sf31/Random+Maze+Gen",
+        "downloadlink2": "https://loot-link.com/s?6b6a7c09",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Custom Permissions Addon",
+        "icon": "https://api.mcpedl.com/storage/submissions/119961/100/screenshot-20240814-204834_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/4lphyqgaxcr7m/Custom+Permissions",
+        "downloadlink2": "https://lootdest.org/s?d724cb50",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Player Rename",
+        "icon": "https://api.mcpedl.com/storage/submissions/117951/100/img4500_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/42bmjs22o9n1d/Player+Rename",
+        "downloadlink2": "https://lootdest.com/s?ee36c2bd",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Sign Commands",
+        "icon": "https://api.mcpedl.com/storage/submissions/119549/100/photo20240804153426_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/4wv092wc9u97q/Sign+Commands",
+        "downloadlink2": "https://loot-link.com/s?db4ee757",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Texter Addon",
+        "icon": "https://api.mcpedl.com/storage/submissions/116343/100/img4295_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/e6wpnycngvitv/Texter+Addon",
+        "downloadlink2": "https://loot-link.com/s?bc0da673",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Unwaxable Signs",
+        "icon": "https://api.mcpedl.com/storage/submissions/119215/100/photo20240728152543_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/ziowo1dd5c8s6/Un-Waxable+Signs",
+        "downloadlink2": "https://lootdest.org/s?572a594c",
+        types: ["script"],
+        "outdated": true
+    },
+    {
+        "name": "Advanced Floating Text",
+        "icon": "https://api.mcpedl.com/storage/submissions/118492/102/photo20240802001437_1-520x245.png",
+        "description": "NA",
+        "downloadlink1": "https://rinku.pro/FloatingTextMCV1-21-7",
+        "downloadlink2": "https://lootdest.org/s?67f226ef",
+        types: ["addon"],
+        "outdated": false
+    }
+];
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function displayAddons(filteredAddons) {
+    const addonsList = document.getElementById('addonsList');
+    addonsList.innerHTML = ''; // Clear current addons
+
+    // Split addons into non-outdated and outdated
+    const nonOutdatedAddons = filteredAddons.filter(addon => !addon.outdated);
+    const outdatedAddons = filteredAddons.filter(addon => addon.outdated);
+
+    // Shuffle each group
+    shuffleArray(nonOutdatedAddons);
+    shuffleArray(outdatedAddons);
+
+    // Combine the arrays: non-outdated first, then outdated
+    const sortedAddons = [...nonOutdatedAddons, ...outdatedAddons];
+
+    sortedAddons.forEach(addon => {
+        const addonContainer = document.createElement('div');
+        addonContainer.className = 'addon-container';
+        addonContainer.style.position = 'relative';
+
+        // Apply outdated styling if applicable
+        if (addon.outdated) {
+            addonContainer.classList.add('outdated');
+        }
+
+        const addonHeader = document.createElement('div');
+        addonHeader.className = 'addon-header';
+        addonHeader.textContent = addon.name;
+
+        const addonBody = document.createElement('div');
+        addonBody.className = 'addon-body';
+
+        const addonIcon = document.createElement('img');
+        addonIcon.className = 'addon-icon';
+        addonIcon.src = addon.icon;
+        addonIcon.alt = addon.name;
+
+        // Check if the addon has "new" in its type
+        if (addon.types && addon.types.includes("new")) {
+            const newBadge = document.createElement('img');
+            newBadge.src = "https://greatresumesfast.com/wp-content/uploads/2013/04/new-clipart.png";
+            newBadge.style.position = "absolute";
+            newBadge.style.top = "0px";
+            newBadge.style.right = "0px";
+            newBadge.style.width = "50px";
+            addonContainer.appendChild(newBadge);
+        }
+
+        // Check if the addon has "beta" in its type
+        if (addon.types && addon.types.includes("beta")) {
+            const betaBadge = document.createElement('img');
+            betaBadge.src = "https://media.licdn.com/dms/image/C4D12AQFg2-lqghHryw/article-cover_image-shrink_600_2000/0/1537729783649?e=2147483647&v=beta&t=ZCv7CGHsbOzGltp8s9g1HSZ33XDHaHKk0w-gKc4CBoo";
+            betaBadge.style.position = "absolute";
+            betaBadge.style.top = "0px";
+            betaBadge.style.left = "-01px";
+            betaBadge.style.width = "50px";
+            addonContainer.appendChild(betaBadge);
+        }
+
+        const addonRight = document.createElement('div');
+        addonRight.className = 'addon-right';
+
+        const downloadButton = document.createElement('a');
+        downloadButton.className = 'download-button';
+        downloadButton.textContent = addon.outdated ? 'Outdated' : 'Download';
+
+        // Always show info menu on click
+        downloadButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            infoDisplay(addon);
+        });
+
+        if (addon.outdated) {
+            const originalText = 'Outdated';
+            const outdatedMessage = "This Addon Is Outdated (Click for more info)";
+            
+            downloadButton.addEventListener('mouseenter', () => {
+                downloadButton.textContent = outdatedMessage;
+            });
+            
+            downloadButton.addEventListener('mouseleave', () => {
+                downloadButton.textContent = originalText;
+            });
+        }
+
+        addonBody.appendChild(addonIcon);
+        addonRight.appendChild(downloadButton);
+
+        addonContainer.appendChild(addonHeader);
+        addonContainer.appendChild(addonBody);
+        addonContainer.appendChild(addonRight);
+
+        addonsList.appendChild(addonContainer);
+    });
+}
+
+function infoDisplay(addon) {
+    const itemInfo = document.getElementById('infoMenu');
+    itemInfo.style.display = 'block';
+    itemInfo.innerHTML = `
+        <h1 class="infoTitle">${addon.name}</h1>
+        <button class="infocloseButton" onclick="closeInfoDisplay()">x</button>
+        <img class="infoaddon-icon" src="${addon.icon}">
+        <div style="border-radius: 0 0 10px 10px;margin: 30px;background-color: rgba(0, 0, 0, 0.6); color: white; padding: 20px 10px; margin-top: -15px; font-size: 15px; text-align: left;">
+            ${addon.outdated ? '<p style="color: white;">This addon is outdated, but you can use <a style="color: lime;" href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank">MCCH Addon Updater</a> to update it.</p>' : ''}
+            <hr>Description:<br>${addon.description}
+        </div>
+        <a href="${uselink2 ? addon.downloadlink2 : addon.downloadlink1}" target="_blank" class="download-button2">
+            ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+        </a>
+    `;
+}
+
+function closeInfoDisplay() {
+    const itemInfo = document.getElementById('infoMenu');
+    itemInfo.style.display = 'none';
+    itemInfo.innerHTML = '';
+}
+
+// Initialize display
+const freenoads = document.getElementById('freenoads');
+const outdated = document.getElementById('outdated');
+
+if (!uselink2 && !updateNeeded) {
+    freenoads.style.display = "block";
+} else if (updateNeeded) {
+    outdated.style.display = "flex";
+}
+
+displayAddons(addons);
+
+// Filter functionality
+const filterButtons = document.querySelectorAll('#addonsh6 h6');
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+        let filteredAddons;
+
+        if (filter === 'all') {
+            filteredAddons = addons;
+        } else {
+            filteredAddons = addons.filter(addon => addon.types.includes(filter));
+        }
+
+        displayAddons(filteredAddons);
+    });
+});
+    </script>
+</body>
+</html>
