@@ -1,6 +1,7 @@
 
 const addons = [
     {
+        "author": "Orzubek2009",
         "name": "Player Collision",
         "icon": "https://github.com/Orzubek2009/mcbeaddons/blob/main/addonIcons/PlayerCollision.jpg?raw=true",
         "description": "",
@@ -10,6 +11,7 @@ const addons = [
         "outdated": false
     },
     {
+        "author": "Orzubek2009",
         "name": "Player Fusion",
         "icon": "https://github.com/Orzubek2009/mcbeaddons/blob/main/addonIcons/PlayerFusion.png?raw=true",
         "description": "You can use command \"/fusion <fusionstrength> <on/off>\" to change player fusion script properties. You can even add \"nofusion\" tag to players so they wont be magnetic.",
@@ -19,6 +21,7 @@ const addons = [
         "outdated": false
     },
     {
+        "author": "Orzubek2009",
         "name": "2009AI",
         "icon": "https://api.mcpedl.com/storage/submissions/128085/100/packicon_1-520x245.png",
         "description": "",
@@ -28,6 +31,7 @@ const addons = [
         "outdated": false
     },
     {
+        "author": "Orzubek2009",
         "name": "Soft Kick Addon",
         "icon": "https://i.ibb.co/MBP9Xsc/pack-icon.jpg",
         "description": "NA",
@@ -37,6 +41,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Block Reach",
         "icon": "https://api.mcpedl.com/storage/submissions/127782/100/screenshot-20250310-112421_1-520x245.png",
         "description": "NA",
@@ -46,6 +51,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Advanced Chat And Name Ranks",
         "icon": "https://api.mcpedl.com/storage/submissions/121654/100/screenshot-20241005-at-84538am_1-520x245.png",
         "description": "NA",
@@ -55,6 +61,7 @@ const addons = [
         "outdated": false
     },
     {
+        "author": "Orzubek2009",
         "name": "Admin Menu V5 | Easy to use",
         "icon": "https://api.mcpedl.com/storage/submissions/116737/105/12312312321345456_1-520x245.png",
         "description": "NA",
@@ -64,6 +71,7 @@ const addons = [
         "outdated": false
     },
     {
+        "author": "Orzubek2009",
         "name": "Advanced Kills and Deaths Counter",
         "icon": "https://api.mcpedl.com/storage/submissions/118684/100/photo20240715020759_1-520x245.png",
         "description": "NA",
@@ -73,6 +81,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Block Interaction Prevention",
         "icon": "https://api.mcpedl.com/storage/submissions/119373/100/photo20240801010708_1-520x245.png",
         "description": "NA",
@@ -82,6 +91,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Chicken AntiCheat (Discontinued)",
         "icon": "https://api.mcpedl.com/storage/submissions/118452/100/img4707_1-520x245.png",
         "description": "This addon is broken and cannot be updated at all. This addon is also discontinued and will no longer be updated nor edited.",
@@ -91,6 +101,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Entity Cps Tester",
         "icon": "https://api.mcpedl.com/storage/submissions/118701/102/img4763_1-520x245.png",
         "description": "NA",
@@ -100,6 +111,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Lock/Unlock Entity Interactions",
         "icon": "https://api.mcpedl.com/storage/submissions/117964/100/img4509_1-520x245.png",
         "description": "NA",
@@ -109,6 +121,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Maze Generator Command",
         "icon": "https://api.mcpedl.com/storage/submissions/117660/100/img4477_1-520x245.png",
         "description": "NA",
@@ -118,6 +131,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Custom Permissions Addon",
         "icon": "https://api.mcpedl.com/storage/submissions/119961/100/screenshot-20240814-204834_1-520x245.png",
         "description": "NA",
@@ -127,6 +141,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Player Rename",
         "icon": "https://api.mcpedl.com/storage/submissions/117951/100/img4500_1-520x245.png",
         "description": "NA",
@@ -136,6 +151,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Sign Commands",
         "icon": "https://api.mcpedl.com/storage/submissions/119549/100/photo20240804153426_1-520x245.png",
         "description": "NA",
@@ -145,6 +161,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Texter Addon",
         "icon": "https://api.mcpedl.com/storage/submissions/116343/100/img4295_1-520x245.png",
         "description": "NA",
@@ -154,6 +171,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Unwaxable Signs",
         "icon": "https://api.mcpedl.com/storage/submissions/119215/100/photo20240728152543_1-520x245.png",
         "description": "NA",
@@ -163,6 +181,7 @@ const addons = [
         "outdated": true
     },
     {
+        "author": "Orzubek2009",
         "name": "Advanced Floating Text",
         "icon": "https://api.mcpedl.com/storage/submissions/118492/102/photo20240802001437_1-520x245.png",
         "description": "NA",
