@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,21 +33,68 @@
             background: rgba(0, 200, 255, 0)
         }
 
-        h1 {
-            box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3);
-            font-size: 22px;
-            font-family: 'Press Start 2P', cursive;
-            color: white;
-            background-color: black;
-            border-radius: 0 0 35px 35px;
-            text-align: center;
-            margin: 0;
-            border: 3px solid #5E5E5E;
-            padding: 25px 0 30px 0;
-            position: fixed;
-            width: 99.55%;
-            z-index: 9999999;
-        }
+
+
+
+h1 {
+    font-size: 22px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 25%, transparent 100%), 
+                linear-gradient(to right, #1a1a1a, #3a3a3a, #1a1a1a);
+    border-radius: 0 0 35px 35px;
+    text-align: center;
+    margin: 0;
+    border: 3px solid #5E5E5E;
+    border-top: none;
+    padding: 25px 0 30px 0;
+    position: fixed;
+    width: 99.55%;
+    z-index: 9999999;
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3),
+                inset 0 -8px 12px rgba(0, 0, 0, 0.4);
+    text-shadow: 
+        3px 3px 0 #3a3a3a,
+        6px 6px 0 rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    position: fixed;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
+    box-shadow: 0 0 4px rgba(255,255,255,0.5);
+}
+
+h1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, 
+        transparent, 
+        #5E5E5E, 
+        #8E8E8E, 
+        #5E5E5E, 
+        transparent);
+    opacity: 0.7;
+}
+
+
+
+
+
+
+
+
 
         .addon-description {
             font-size: 14px;
@@ -578,14 +626,16 @@
 </head>
 <body>
     <h1>Minecraft Bedrock Addons</h1>
+            <br><br><br>
 
     <div class="content">
+            <h5 style="background: rgb(194, 194, 194); color: black; border-radius: 12px; padding: 5px;">URL: <a style="color: rgb(0, 102, 255);" target="_top" href="https://www.mcbeaddons.com">MCBEADDONS.COM</a></h5>
+
         <div class="addonsDisplay1">
-            <br><br><br><br>
             <h4>Last Updated: 08/04/2025<br>Supported Version: 1.21.94</h4>
-            
+                <h3 style="font-size: medium; background-color: rgb(106, 106, 106, 0.3); padding: 10px 20px; border-radius: 7px; margin-top: 4px;">Follow us on:</h3>
+
             <div class="link-container">
-                <h3 style="font-size: medium; background-color: rgb(106, 106, 106); padding: 10px 40%; border-radius: 7px; margin-top: 4px;">Follow us on:</h3>
                 <a href="https://www.youtube.com/@Orzubek-1" target="_blank" class="button youtube-link">
                     <img src="https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo.png" alt="YouTube Icon" class="youtube-icon">
                     YouTube
@@ -595,7 +645,6 @@
                     Discord
                 </a>
             </div>
-            <h5 style="background: rgb(194, 194, 194); color: black; border-radius: 12px; padding: 5px;">URL: <a style="color: rgb(0, 102, 255);" target="_top" href="https://www.mcbeaddons.com">MCBEADDONS.COM</a></h5>
         </div>
         <div id="infoMenu"></div>
         <div class="addonsDisplay">
