@@ -32,22 +32,60 @@
             background: rgba(0, 200, 255, 0)
         }
 
-        h1 {
-            box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3);
-            font-size: 22px;
-            font-family: 'Press Start 2P', cursive;
-            color: white;
-            background-color: black;
-            border-radius: 0 0 35px 35px;
-            text-align: center;
-            margin: 0;
-            border: 3px solid #5E5E5E;
-            padding: 25px 0 30px 0;
-            position: fixed;
-            width: 99.6%;
-            z-index: 9999999;
-            top: 0px;
-        }
+
+h1 {
+    font-size: 22px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 25%, transparent 100%), 
+                linear-gradient(to right, #1a1a1a, #3a3a3a, #1a1a1a);
+    border-radius: 0 0 35px 35px;
+    text-align: center;
+    margin: 0;
+    border: 3px solid #5E5E5E;
+    border-top: none;
+    padding: 25px 0 30px 0;
+    position: fixed;
+    width: 99.55%;
+    z-index: 9999999;
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3),
+                inset 0 -8px 12px rgba(0, 0, 0, 0.4);
+    text-shadow: 
+        3px 3px 0 #3a3a3a,
+        6px 6px 0 rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    position: fixed;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
+    box-shadow: 0 0 4px rgba(255,255,255,0.5);
+}
+
+h1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, 
+        transparent, 
+        #5E5E5E, 
+        #8E8E8E, 
+        #5E5E5E, 
+        transparent);
+    opacity: 0.7;
+}
+
+
 
         .content {
             overflow-y: auto;
