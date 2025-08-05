@@ -483,6 +483,23 @@ h1::before {
         }
 
         .infoTitle {
+
+
+            box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3);
+            font-size: 22px;
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            background-color: black;
+            border-radius: 0 0 35px 35px;
+            text-align: center;
+            margin: 0;
+            border: 3px solid #5E5E5E;
+            padding: 25px 0 30px 0;
+            position: fixed;
+            width: 99.55%;
+            z-index: 9999999;
+
+		
             font-family: 'Lexend';
             font-size: 20px;
             text-align: center;
@@ -859,7 +876,7 @@ function infoDisplay(addon) {
     }
     itemInfo.innerHTML = `
         ${authorInfo}
-        <h2 class="infoTitle">${addon.name}</h2>
+        <h1 class="infoTitle">${addon.name}</h1>
         <button class="infocloseButton" onclick="closeInfoDisplay()">x</button>
         <img class="infoaddon-icon" src="${addon.icon}">
         <div style="border-radius: 0 0 10px 10px;margin: 30px;background-color: rgba(0, 0, 0, 0.6); color: white; padding: 20px 10px; margin-top: -15px; font-size: 15px; text-align: left;">
