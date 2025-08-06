@@ -8,7 +8,7 @@ const addons = [
         "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/xznymojvjyzrb/Player+Collision",
         "downloadlink2": "https://www.mediafire.com/folder/xznymojvjyzrb/Player+Collision",
         types: ["script"],
-        "outdated": false
+        "outdated": true
     },
     {
         "author": "Orzubek2009",
@@ -18,7 +18,7 @@ const addons = [
         "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/ah81vkan2urid/Player+Fusion",
         "downloadlink2": "https://www.mediafire.com/folder/ah81vkan2urid/Player+Fusion",
         types: ["script"],
-        "outdated": false
+        "outdated": true
     },
     {
         "author": "Orzubek2009",
@@ -28,7 +28,7 @@ const addons = [
         "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/3uflhdi8wbewa/2009AI",
         "downloadlink2": "https://www.mediafire.com/folder/3uflhdi8wbewa/2009AI",
         types: ["addon"],
-        "outdated": false
+        "outdated": true
     },
     {
         "author": "Orzubek2009",
@@ -58,7 +58,7 @@ const addons = [
         "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/lfz0i487awyeh/Chat+And+Name+Ranks+Addon",
         "downloadlink2": "https://rinku.me/RanksAddonMCV_1-21-30",
         types: ["addon"],
-        "outdated": false
+        "outdated": true
     },
     {
         "author": "Orzubek2009",
@@ -68,7 +68,7 @@ const addons = [
         "downloadlink1": "https://rinku.pro/st?api=1aef246c717c6f6271b3975500f66718b62c8550&url=https://www.mediafire.com/folder/jrtclpwwsltkc/Admin+MenuV5",
         "downloadlink2": "https://lootdest.org/s?d396c03e",
         types: ["addon"],
-        "outdated": false
+        "outdated": true
     },
     {
         "author": "Orzubek2009",
@@ -188,6 +188,6 @@ const addons = [
         "downloadlink1": "https://rinku.pro/FloatingTextMCV1-21-7",
         "downloadlink2": "https://lootdest.org/s?67f226ef",
         types: ["addon"],
-        "outdated": false
+        "outdated": true
     }
 ];
