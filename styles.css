@@ -26,8 +26,11 @@
             font-size: 22px;
             font-family: 'Press Start 2P', cursive;
             color: white;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 25%, transparent 100%), 
-                        linear-gradient(to right, #1a1a1a, #3a3a3a, #1a1a1a);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.747) 25%, transparent 100%), 
+                        linear-gradient(to right, #1a1a1a76, #3a3a3ab0, #1a1a1aa1);
+
+            backdrop-filter: blur(19px);
+
             border-radius: 0 0 35px 35px;
             text-align: center;
             margin: 0;
@@ -84,7 +87,7 @@
         }
         
         .addon-container {
-            background: linear-gradient(120deg, #2c3e50, #4ca1af);
+            background: linear-gradient(120deg, #2c3e50b6, #8ebfc6);
             border: 2px solid lightgray;
             border-radius: 15px;
             padding: 20px;
@@ -107,29 +110,34 @@
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
         }
 
+        .addon-container:hover .addon-header {
+            border-bottom: 5px solid rgba(0, 255, 42, 0.648);
+        }
+
         .addon-header {
-            font-size: 20px;
+            font-size: large;
             text-align: center;
-            background: linear-gradient(90deg, #3498db, #9b59b6);
+            background: linear-gradient(90deg, #3498dbe3, #40c1e1a9);
             color: white;
             padding: 10px;
             border-radius: 12px;
             transition: background 0.3s ease;
             margin-bottom: 20px;
+            border-bottom: 5px solid rgba(70, 194, 225, 0.476);
         }
 
         .download-button {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 8px;
+            margin-bottom: 14px;
             border-radius: 8px;
-            background-color: #1abc9c;
-            color: white;
-            font-size: 16px;
+            background-color: #00ffc86f;
+            border: 2px solid rgba(0, 128, 68, 0.142);
+            color: rgba(255, 255, 255, 0.911);
+            font-size: 15px;
             font-weight: bold;
-            border: none;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             animation: bounce 2s infinite;
@@ -138,8 +146,8 @@
         }
 
         .download-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.6);
+            background-color: #00ff6657;
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.232);
         }
 
         .download-button:active {
@@ -438,7 +446,8 @@
 
         #infoMenu {
             display: none;
-            background: linear-gradient(120deg, #2c3e50, #4ca1af);
+            background: linear-gradient(120deg, #2c3e50b4, #208bea55);
+            backdrop-filter: blur(19px);
             width: 75%;
             max-width: 500px;
             position: fixed;
@@ -477,7 +486,7 @@
             font-family: 'Lexend';
             font-size: 20px;
             text-align: center;
-            background: linear-gradient(90deg, #3498db, #9b59b6);
+            background: linear-gradient(90deg, #0099ff, #00ffb74f);
             color: white;
             padding: 10px 0px 10px 60px;
             border-radius: 12px;
@@ -506,9 +515,9 @@
             height: 46px;
             border-radius: 10px 0px 10px 0px;
             font-size: xx-large;
-            color: white;
+            color: rgba(255, 255, 255, 0.681);
             border: 1px solid rgba(255, 100, 100, 0.7);
-            background: rgba(200, 40, 40, 0.95);
+            background: rgba(255, 0, 0, 0.587);
             transition: transform 0.2s, background 0.2s;
             z-index: 25;
             cursor: pointer;
