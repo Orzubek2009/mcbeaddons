@@ -19,7 +19,7 @@
             padding: 0;
             margin: 0;
             font-family: 'Lexend', sans-serif;
-            background: linear-gradient(120deg, #6599cc, #00d0ff);
+            background: linear-gradient(120deg, #63a5ccde, #3ca2c4);
             color: white;
             overflow-x: hidden;
         }
@@ -37,59 +37,6 @@
         }
 
 
-h1 {
-    font-size: 22px;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 25%, transparent 100%), 
-                linear-gradient(to right, #1a1a1a, #3a3a3a, #1a1a1a);
-    border-radius: 0 0 35px 35px;
-    text-align: center;
-    margin: 0;
-    border: 3px solid #5E5E5E;
-    border-top: none;
-    padding: 25px 0 30px 0;
-    position: fixed;
-    width: 99.55%;
-    z-index: 9999999;
-    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3),
-                inset 0 -8px 12px rgba(0, 0, 0, 0.4);
-    text-shadow: 
-        3px 3px 0 #3a3a3a,
-        6px 6px 0 rgba(0, 0, 0, 0.3),
-        0 0 8px rgba(255, 255, 255, 0.4);
-    letter-spacing: 1px;
-    position: fixed;
-    top: 0px;
-}
-
-h1::after {
-    content: "";
-    position: absolute;
-    left: 25%;
-    width: 50%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
-    box-shadow: 0 0 4px rgba(255,255,255,0.5);
-    bottom: 10px;
-}
-
-h1::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(to right, 
-        transparent, 
-        #5E5E5E, 
-        #8E8E8E, 
-        #5E5E5E, 
-        transparent);
-    opacity: 0.7;
-}
-
 
 
         .content {
@@ -99,13 +46,13 @@ h1::before {
         }
 
         .author-profile {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            background: rgba(175, 175, 175, 0.391);
+            border-radius: 10px;
             padding: 20px;
             margin: 20px auto;
             max-width: 600px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.598);
         }
 
         .author-icon {
@@ -126,8 +73,8 @@ h1::before {
             font-size: 16px;
             margin: 10px 0;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.384);
+            border-radius: 4px;
         }
 
         .social-links {
@@ -217,33 +164,6 @@ h1::before {
             width: 100%;
         }
 
-        .download-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            background-color: #1abc9c;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            animation: bounce 2s infinite;
-            width: 100%;
-        }
-
-        .download-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.6);
-        }
-
-        .download-button:active {
-            transform: scale(0.98);
-        }
-
         .addon-container.outdated {
             filter: grayscale(100%);
             opacity: 1;
@@ -292,29 +212,122 @@ h1::before {
             }
         }
 
-        footer {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        h1 {
+            font-size: 22px;
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.747) 25%, transparent 100%), 
+                        linear-gradient(to right, #1a1a1a76, #3a3a3ab0, #1a1a1aa1);
+
+            backdrop-filter: blur(19px);
+
+            border-radius: 0 0 35px 35px;
             text-align: center;
-            padding: 1rem;
-            background: #043f66;
-            border-top: 2px solid #475569;
+            margin: 0;
+            border: 3px solid #5E5E5E;
+            border-top: none;
+            padding: 25px 0 30px 0;
+            position: fixed;
+            width: 99.55%;
+            z-index: 9999999;
+            box-shadow: 0 16px 20px rgba(0, 0, 0, 0.3),
+                        inset 0 -8px 12px rgba(0, 0, 0, 0.4);
+            text-shadow: 
+                3px 3px 0 #3a3a3a,
+                6px 6px 0 rgba(0, 0, 0, 0.3),
+                0 0 8px rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0px;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
+            box-shadow: 0 0 4px rgba(255,255,255,0.5);
+        }
+
+        h1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, 
+                transparent, 
+                #5E5E5E, 
+                #8E8E8E, 
+                #5E5E5E, 
+                transparent);
+            opacity: 0.7;
+        }
+        
+        .addon-container {
+            background: linear-gradient(120deg, #153d6176, #157989bd);
+            border: 2px solid lightgray;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+            transition: transform 0.8s ease, box-shadow 2.3s ease;
+            animation: slideUp 2s ease-out;
+            min-width: 250px;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        
+        .addon-container:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .addon-container:hover .addon-header {
+            border-bottom: 5px solid rgba(0, 255, 170, 0.648);
+        }
+
+        .addon-header {
+            font-size: large;
+            text-align: center;
+            background: linear-gradient(90deg, #3498dbe3, #40c1e1a9);
+            color: white;
+            padding: 10px;
             border-radius: 12px;
-            margin-top: 20px;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
+            border-bottom: 5px solid rgba(70, 194, 225, 0.476);
         }
 
-        footer a {
-            color: #3b82f6;
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
 
-        footer hr {
-            border: 1px solid #475569;
-            margin: 0.5rem 0;
-        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -328,24 +341,83 @@ h1::before {
         </div>
         <h6 style="border: 4px solid #525252; background-color: black; text-align: center; font-family: 'Black Ops One', Impact, sans-serif; max-width: 600px; margin: 20px auto; border-radius: 6px; color: white; font-size: 20px;">Creations:</h6>
         <div id="addonsList"></div>
-        <footer>
-            <a href="index.html">MCBEADDONS Main Page</a><hr>
-            <a href="https://sites.google.com/view/minecraftcreatorhub" target="_blank">MCCH Main page</a><hr>
-            <a href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank">MCCH Addon Updater</a><hr>
-            <a href="https://sites.google.com/view/minecraftcreatorhub/menu/tools/scripter" target="_blank">MCCH Scripter (Create your own addon!)</a>
-        </footer>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<footer style="    background: linear-gradient(135deg, #043f66 0%, #022a46 100%);    border-top: 3px solid #60a5fa;    margin-top: 40px;    padding: 25px 0;    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);    font-family: 'Segoe UI', sans-serif;	border-radius: 12px;">    <div style="        max-width: 1200px;        margin: 0 auto;        display: flex;        flex-wrap: wrap;        justify-content: space-between;        align-items: flex-start;        padding: 0 20px;    ">        <!-- Brand Logo with 3D effect -->        <div style="            display: flex;            align-items: center;            gap: 12px;            margin-bottom: 20px;            cursor: pointer;            transition: transform 0.3s;            padding: 10px;            border-radius: 8px;        " onclick="window.location.replace('index.html')"            onmouseover="this.style.transform='scale(1.05)'"           onmouseout="this.style.transform='scale(1)'">            <img style="                width: 40px;                height: 40px;                filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));                transition: transform 0.5s;            " src="https://raw.githubusercontent.com/Orzubek2009/mcbeaddons/refs/heads/main/favcon.png"                onmouseover="this.style.transform='rotate(15deg)'"               onmouseout="this.style.transform='rotate(0)'">            <span style="                font-size: 28px;                font-weight: 700;		color: white;                text-shadow: 0 2px 4px rgba(0,0,0,0.1);            ">MCBEADDONS</span>        </div>        <!-- Links Section with animated hover effects -->        <div style="display: flex; flex-wrap: wrap; gap: 30px;">            <!-- Tools Column -->            <div style="min-width: 180px;">                <h3 style="                    color: #bfdbfe;                    margin-bottom: 15px;                    font-size: 18px;                    border-bottom: 2px solid #3b82f6;                    padding-bottom: 5px;                    display: inline-block;                ">Tools</h3>                <ul style="list-style: none; padding: 0; margin: 0;">                    <li style="margin-bottom: 12px;">                        <a style="                            color: #93c5fd;                            text-decoration: none;                            display: flex;                            align-items: center;                            gap: 8px;                            padding: 8px 12px;                            border-radius: 6px;                            transition: all 0.3s;                        " href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank"                           onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='#60a5fa'"                           onmouseout="this.style.background='transparent'; this.style.color='#93c5fd'">                            <i class="fas fa-sync-alt"></i>                            <span>MCCH Addon Updater</span>                        </a>                    </li>                    <li style="margin-bottom: 12px;">                        <a style="                            color: #93c5fd;                            text-decoration: none;                            display: flex;                            align-items: center;                            gap: 8px;                            padding: 8px 12px;                            border-radius: 6px;                            transition: all 0.3s;                        " href="https://sites.google.com/view/minecraftcreatorhub/menu/tools/scripter" target="_blank"                           onmouseover="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.color='#60a5fa'"                           onmouseout="this.style.background='transparent'; this.style.color='#93c5fd'">                            <i class="fas fa-code"></i>                            <span>MCCH Scripter</span>                        </a>                    </li>                </ul>            </div>            <!-- Social Media Column -->            <div style="min-width: 180px;">                <h3 style="                    color: #bfdbfe;                    margin-bottom: 15px;                    font-size: 18px;                    border-bottom: 2px solid #3b82f6;                    padding-bottom: 5px;                    display: inline-block;                ">Connect</h3>                <ul style="list-style: none; padding: 0; margin: 0;">                    <li style="margin-bottom: 12px;">                        <a style="                            color: #93c5fd;                            text-decoration: none;                            display: flex;                            align-items: center;                            gap: 8px;                            padding: 8px 12px;                            border-radius: 6px;                            transition: all 0.3s;                        " href="https://www.youtube.com/@Orzubek-1" target="_blank"                           onmouseover="this.style.background='rgba(255, 0, 0, 0.1)'; this.style.color='#f87171'"                           onmouseout="this.style.background='transparent'; this.style.color='#93c5fd'">                            <i class="fab fa-youtube" style="color: #f87171;"></i>                            <span>YouTube</span>                        </a>                    </li>                    <li style="margin-bottom: 12px;">                        <a style="                            color: #93c5fd;                            text-decoration: none;                            display: flex;                            align-items: center;                            gap: 8px;                            padding: 8px 12px;                            border-radius: 6px;                            transition: all 0.3s;                        " href="https://discord.com/invite/DBmetbGZVk" target="_blank"                           onmouseover="this.style.background='rgba(88, 101, 242, 0.1)'; this.style.color='#818cf8'"                           onmouseout="this.style.background='transparent'; this.style.color='#93c5fd'">                            <i class="fab fa-discord" style="color: #818cf8;"></i>                            <span>Discord</span>                        </a>                    </li>                    <li style="margin-bottom: 12px;">                        <a style="                            color: #93c5fd;                            text-decoration: none;                            display: flex;                            align-items: center;                            gap: 8px;                            padding: 8px 12px;                            border-radius: 6px;                            transition: all 0.3s;                        " href="https://mcpedl.com/user/orzubek2009/" target="_blank"                           onmouseover="this.style.background='rgba(234, 179, 8, 0.1)'; this.style.color='#fbbf24'"                           onmouseout="this.style.background='transparent'; this.style.color='green'">                            <i class="fas fa-gamepad" style="color: lime;"></i>                            <span>MCPEDL</span>                        </a>                    </li>                </ul>            </div>        </div>    </div>    <div style="        text-align: center;        margin-top: 30px;        padding-top: 20px;        border-top: 1px solid rgba(147, 197, 253, 0.2);        color: #93c5fd;        font-size: 14px;    ">        © 2025 MCBEADDONS. All rights reserved.    </div></footer>
+
+
+
     </div>
     <script src="./arrays/addons.js"></script>
     <script src="./arrays/authors.js"></script>
     <script src="./arrays/icons.js"></script>
     <script>
+function getAuthorFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const authorParam = urlParams.get('author');
+    return authorParam ? authorParam.replace(/-/g, ' ') : null;
+}
 
+function infoDisplay(addon, event) {
+    event.stopPropagation(); // Prevent addon container click
+    const itemInfo = document.createElement('div');
+    itemInfo.className = 'info-menu';
+    itemInfo.style.display = 'block';
+    document.body.appendChild(itemInfo);
 
-        function getAuthorFromURL() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const authorParam = urlParams.get('author');
-            return authorParam ? authorParam.replace(/-/g, ' ') : null;
+    let authorInfo = '';
+    if (addon.author) {
+        const author = authors.find(a => a.name === addon.author);
+        if (author) {
+            authorInfo = `
+                <div class="author-container" style="cursor: pointer;" onclick="window.location.href='authorpage.html?author=${author.name.replace(/ /g, '-')}'">
+                    <img src="${author.icon}" alt="${author.name}" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                    <span style="color: white;">${author.name}</span>
+                </div>
+            `;
         }
+    }
+
+    // Base path for local addons
+    const basePath = './addonManager/packs/';
+    let downloadLinks = '';
+
+    if (addon.download.startsWith('//')) {
+        const addonFile = addon.download.replace('//', '');
+        if (addon.types.includes('addon') && !addonFile.match(/^\[B\]|\[R\]/)) {
+            // For addons with both behavior and resource packs
+            const behaviorFile = `[B]${addonFile}`;
+            const resourceFile = `[R]${addonFile}`;
+            downloadLinks = `
+                <a href="${basePath}${behaviorFile}" target="_blank" class="download-button2" download>Download Behavior Pack</a>
+                <a href="${basePath}${resourceFile}" target="_blank" class="download-button2" download>Download Resource Pack</a>
+            `;
+        } else {
+            // For single file addons (e.g., scripts) or explicitly prefixed files
+            downloadLinks = `<a href="${basePath}${addonFile}" target="_blank" class="download-button2" download>
+                ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+            </a>`;
+        }
+    } else if (addon.download.startsWith('https')) {
+        // External link
+        downloadLinks = `<a href="${addon.download}" target="_blank" class="download-button2">
+            ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+        </a>`;
+    }
+
+    itemInfo.innerHTML = `
+        ${authorInfo}
+        <h1 class="infoTitle">${addon.name}</h1>
+        <button class="infocloseButton" onclick="this.parentElement.remove()">x</button>
+        <img class="infoaddon-icon" src="${addon.icon.replace(/^\/\//, './')}">
+        <div style="border-radius: 0 0 10px 10px; margin: 30px; background-color: rgba(0, 0, 0, 0.6); color: white; padding: 20px 10px; margin-top: -15px; font-size: 15px; text-align: left;">
+            ${addon.outdated ? '<p style="color: white;">This addon is outdated, but you can use <a style="color: lime;" href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank">MCCH Addon Updater</a> to update it.</p>' : ''}
+            <hr>Description:<br>${addon.description}
+        </div>
+        ${downloadLinks}
+    `;
+}
+
 function displayAuthorProfile() {
     const authorName = getAuthorFromURL();
     const author = authors.find(a => a.name === authorName);
@@ -363,7 +435,6 @@ function displayAuthorProfile() {
     // Set social links
     const socialLinks = document.getElementById('socialLinks');
     socialLinks.innerHTML = '';
-
 
     for (const [platform, url] of Object.entries(author.socials)) {
         const link = document.createElement('a');
@@ -386,15 +457,17 @@ function displayAuthorProfile() {
         const addonContainer = document.createElement('div');
         addonContainer.className = 'addon-container';
         addonContainer.style.position = 'relative';
-        addonContainer.style.cursor = 'pointer'; // Indicate clickability
+        addonContainer.style.cursor = 'pointer';
 
         if (addon.outdated) {
             addonContainer.classList.add('outdated');
         }
 
-        // Add click event to navigate to index.html?addon=addon-name
-        addonContainer.addEventListener('click', () => {
-            window.location.href = `index.html?addon=${encodeURIComponent(addon.name.replace(/ /g, '-'))}`;
+        // Navigate to index.html?addon=addon-name on container click
+        addonContainer.addEventListener('click', (event) => {
+            if (!event.target.closest('.download-button')) {
+                window.location.href = `index.html?addon=${encodeURIComponent(addon.name.replace(/ /g, '-'))}`;
+            }
         });
 
         const addonHeader = document.createElement('div');
@@ -406,7 +479,7 @@ function displayAuthorProfile() {
 
         const addonIcon = document.createElement('img');
         addonIcon.className = 'addon-icon';
-        addonIcon.src = addon.icon;
+        addonIcon.src = addon.icon.replace(/^\/\//, './');
         addonIcon.alt = addon.name;
 
         if (addon.types && addon.types.includes("new")) {
@@ -432,6 +505,8 @@ function displayAuthorProfile() {
         const addonRight = document.createElement('div');
         addonRight.className = 'addon-right';
 
+
+
         addonBody.appendChild(addonIcon);
 
         addonContainer.appendChild(addonHeader);
@@ -442,8 +517,8 @@ function displayAuthorProfile() {
     });
 }
 
-        // Initialize author profile
-        displayAuthorProfile();
+// Initialize author profile
+displayAuthorProfile();
     </script>
 </body>
 </html>
