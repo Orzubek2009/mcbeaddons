@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-9583628379659507">
+    <title>MCBEADDONS 💎</title>
+    <link rel="icon" href="https://github.com/Orzubek2009/mcbeaddons/blob/main/favcon.png?raw=true" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <h1>Minecraft Bedrock Addons</h1>
+    <br><br><br>
+
+    <div class="content">
+        <h5 style="background: rgb(194, 194, 194); color: black; border-radius: 12px; padding: 5px;">URL: <a style="color: rgb(0, 102, 255);" target="_top" href="https://www.mcbeaddons.com">MCBEADDONS.COM</a></h5>
+
+        <div class="addonsDisplay1">
+            <h4>Last Updated: 08/04/2025<br>Supported Version: 1.21.94</h4>
+            <h3 style="font-size: medium; background-color: rgb(106, 106, 106, 0.3); padding: 10px 20px; border-radius: 7px; margin-top: 4px;">Follow us on:</h3>
+
+            <div class="link-container">
+                <a href="https://www.youtube.com/@Orzubek-1" target="_blank" class="button youtube-link">
+                    <img src="https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo.png" alt="YouTube Icon" class="youtube-icon">
+                    YouTube
+                </a>
+                <a href="https://discord.com/invite/DBmetbGZVk" target="_blank" class="button discord-link">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/free-discord-3691244-3073764.png?f=webp&w=128" alt="Discord Icon" class="discord-icon">
+                    Discord
+                </a>
+            </div>
+        </div>
+        <div id="infoMenu"></div>
+        <div class="addonsDisplay">
+            <div id="outdated" class="video-button" style="border:4px solid rgba(200,0,0,1); background:rgba(250,0,0,1); padding:10px; align-items:center; text-align:center; justify-content:space-between;">
+                <img style="width:50px;" src="https://www.freeiconspng.com/thumbs/warning-icon-png/status-warning-icon-png-29.png">
+                <p style="margin:0px;">Some addons on this page aren't yet updated. Please wait for the creators to update them, or click the button here to update them yourself.</p><br>
+                <button style="width: 150px; height: 70px;" onclick="window.open('https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater', '_blank')" class="updateSite">McAddon Updater</button>
+            </div>
+            <div class="video-button" style="display: block;padding:10px; align-items:center; text-align:center; justify-content:space-between;">
+                <p style="margin:0;"><p style="font-size: small;">MCBEADDONS.COM is undergoing a major update and will be completed by 08/08/2025. Until then, no addons can be downloaded.</p>
+            </div>
+            <h5 id="addonsDisplay"></h5>
+            <div id="addonsh6">
+                <h6 class="active" data-filter="all">All</h6>
+                <h6 data-filter="addon">Addons</h6>
+                <h6 data-filter="script">Scripts</h6>
+                <h6 data-filter="world">Worlds</h6>
+            </div>
+            <div id="addonsList"></div>
+        </div>
+        <footer>
+            <a href="https://sites.google.com/view/minecraftcreatorhub" target="_blank">MCCH Main page</a><hr>
+            <a href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank">MCCH Addon Updater</a><hr>
+            <a href="https://sites.google.com/view/minecraftcreatorhub/menu/tools/scripter" target="_blank">MCCH Scripter (Create your own addon!)</a>
+        </footer>
+    </div>
+    <script src="./arrays/addons.js"></script>
+    <script src="./arrays/authors.js"></script>
+    <script>
+const updateNeeded = false;
+
+function getAddonParamsFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const addonParam = urlParams.get('addon');
+    const authorParam = urlParams.get('author');
+    return {
+        addon: addonParam ? addonParam.replace(/-/g, ' ') : null,
+        author: authorParam ? authorParam.replace(/-/g, ' ') : null
+    };
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function displayAddons(filteredAddons) {
+    const addonsList = document.getElementById('addonsList');
+    addonsList.innerHTML = ''; // Clear current addons
+
+    // Get addon and author names from URL
+    const { addon: featuredAddonName, author: featuredAuthorName } = getAddonParamsFromURL();
+    let featuredAddon = null;
+    let otherAddons = filteredAddons;
+
+    // If there's a featured addon or author, find it and prioritize it
+    if (featuredAddonName || featuredAuthorName) {
+        featuredAddon = filteredAddons.find(addon => 
+            addon.name === featuredAddonName || 
+            (addon.author && addon.author === featuredAuthorName)
+        );
+        otherAddons = filteredAddons.filter(addon => 
+            addon.name !== featuredAddonName && 
+            (!addon.author || addon.author !== featuredAuthorName)
+        );
+    }
+
+    // Split addons into non-outdated and outdated
+    const nonOutdatedAddons = otherAddons.filter(addon => !addon.outdated);
+    const outdatedAddons = otherAddons.filter(addon => addon.outdated);
+
+    // Shuffle each group
+    shuffleArray(nonOutdatedAddons);
+    shuffleArray(outdatedAddons);
+
+    // Combine arrays: featured addon first (if exists), then non-outdated, then outdated
+    const sortedAddons = [
+        ...(featuredAddon ? [featuredAddon] : []),
+        ...nonOutdatedAddons,
+        ...outdatedAddons
+    ];
+
+    sortedAddons.forEach((addon, index) => {
+        const addonContainer = document.createElement('div');
+        addonContainer.className = 'addon-container';
+        addonContainer.style.position = 'relative';
+
+        // Apply featured styling for the first addon if it matches the URL parameters
+        if (index === 0 && featuredAddon && (addon.name === featuredAddonName || addon.author === featuredAuthorName)) {
+            addonContainer.classList.add('featured');
+        }
+
+        // Apply outdated styling if applicable
+        if (addon.outdated) {
+            addonContainer.classList.add('outdated');
+        }
+
+        const addonHeader = document.createElement('div');
+        addonHeader.className = 'addon-header';
+        addonHeader.textContent = addon.name;
+
+        const addonBody = document.createElement('div');
+        addonBody.className = 'addon-body';
+
+        const addonIcon = document.createElement('img');
+        addonIcon.className = 'addon-icon';
+        addonIcon.src = addon.icon.replace(/^\/\//, './');
+        addonIcon.alt = addon.name;
+
+        // Check if the addon has "new" in its type
+        if (addon.types && addon.types.includes("new")) {
+            const newBadge = document.createElement('img');
+            newBadge.src = "https://greatresumesfast.com/wp-content/uploads/2013/04/new-clipart.png";
+            newBadge.style.position = "absolute";
+            newBadge.style.top = "0px";
+            newBadge.style.right = "0px";
+            newBadge.style.width = "50px";
+            addonContainer.appendChild(newBadge);
+        }
+
+        // Check if the addon has "beta" in its type
+        if (addon.types && addon.types.includes("beta")) {
+            const betaBadge = document.createElement('img');
+            betaBadge.src = "https://media.licdn.com/dms/image/C4D12AQFg2-lqghHryw/article-cover_image-shrink_600_2000/0/1537729783649?e=2147483647&v=beta&t=ZCv7CGHsbOzGltp8s9g1HSZ33XDHaHKk0w-gKc4CBoo";
+            betaBadge.style.position = "absolute";
+            betaBadge.style.top = "0px";
+            betaBadge.style.left = "-01px";
+            betaBadge.style.width = "50px";
+            addonContainer.appendChild(betaBadge);
+        }
+
+        const addonRight = document.createElement('div');
+        addonRight.className = 'addon-right';
+
+        const downloadButton = document.createElement('a');
+        downloadButton.className = 'download-button';
+        downloadButton.textContent = addon.outdated ? 'Outdated' : 'Download';
+
+        // Add author information if available
+        if (addon.author) {
+            const authorContainer = document.createElement('div');
+            authorContainer.className = 'author-container';
+            
+            const author = authors.find(a => a.name === addon.author);
+            if (author) {
+                const authorIcon = document.createElement('img');
+                authorIcon.classbellyName = 'author-icon';
+                authorIcon.src = author.icon;
+                authorIcon.alt = author.name;
+                authorIcon.style = "width: 20px; height: 20px; border-radius: 50%; margin-right: 10px;"
+                const authorName = document.createElement('span');
+                authorName.className = 'author-name';
+                authorName.textContent = author.name;
+                authorName.style = "font-size: small;"
+
+                authorContainer.appendChild(authorIcon);
+                authorContainer.appendChild(authorName);
+                authorContainer.addEventListener('click', () => {
+                    window.location.href = `authorpage.html?author=${author.name.replace(/ /g, '-')}`;
+                });
+                addonContainer.appendChild(authorContainer);
+            }
+        }
+        
+        downloadButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            infoDisplay(addon);
+        });
+
+        if (addon.outdated) {
+            const originalText = 'Outdated';
+            const outdatedMessage = "This Addon Is Outdated (Click for more info)";
+            
+            downloadButton.addEventListener('mouseenter', () => {
+                downloadButton.textContent = outdatedMessage;
+            });
+            
+            downloadButton.addEventListener('mouseleave', () => {
+                downloadButton.textContent = originalText;
+            });
+        }
+
+        addonBody.appendChild(addonIcon);
+        addonRight.appendChild(downloadButton);
+
+        addonContainer.appendChild(addonHeader);
+        addonContainer.appendChild(addonBody);
+        addonContainer.appendChild(addonRight);
+
+        addonsList.appendChild(addonContainer);
+    });
+}
+
+function infoDisplay(addon) {
+    const itemInfo = document.getElementById('infoMenu');
+    itemInfo.style.display = 'block';
+    let authorInfo = '';
+    if (addon.author) {
+        const author = authors.find(a => a.name === addon.author);
+        if (author) {
+            authorInfo = `
+                <div class="author-container" style="cursor: pointer;" onclick="window.location.href='authorpage.html?author=${author.name.replace(/ /g, '-')}'">
+                    <img src="${author.icon}" alt="${author.name}" style="width: 25px; height: 25px; border-radius: 50%; margin-right: 10px;">
+                    <span style="color: white;">${author.name}</span>
+                </div>
+            `;
+        }
+    }
+
+    // Base path for local addons
+    const basePath = './addonManager/packs/';
+    let downloadLinks = '';
+
+    if (addon.download.startsWith('//')) {
+        const addonFile = addon.download.replace('//', '');
+        if (addon.types.includes('addon') && !addonFile.match(/^\[B\]|\[R\]/)) {
+            // For addons with both behavior and resource packs
+            const behaviorFile = `[B]${addonFile}`;
+            const resourceFile = `[R]${addonFile}`;
+            downloadLinks = `
+                <a href="${basePath}${behaviorFile}" target="_blank" class="download-button2" download>Download Behavior Pack</a>
+                <br><br><br>
+                <a href="${basePath}${resourceFile}" target="_blank" class="download-button2" download>Download Resource Pack</a>
+            `;
+        } else {
+            // For single file addons (e.g., scripts) or explicitly prefixed files
+            downloadLinks = `<a href="${basePath}${addonFile}" target="_blank" class="download-button2" download>
+                ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+            </a>`;
+        }
+    } else if (addon.download.startsWith('https')) {
+        // External link
+        downloadLinks = `<a href="${addon.download}" target="_blank" class="download-button2">
+            ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+        </a>`;
+    }
+
+    itemInfo.innerHTML = `
+        ${authorInfo}
+        <h1 class="infoTitle">${addon.name}</h1>
+        <button class="infocloseButton" onclick="closeInfoDisplay()">x</button>
+        <img class="infoaddon-icon" src="${addon.icon.replace(/^\/\//, './')}">
+        <div style="border-radius: 0 0 10px 10px;margin: 30px;background-color: rgba(0, 0, 0, 0.6); color: white; padding: 20px 10px; margin-top: -15px; font-size: 15px; text-align: left;">
+            ${addon.outdated ? '<p style="color: white;">This addon is outdated, but you can use <a style="color: lime;" href="https://sites.google.com/view/minecraftcreatorhub/menu/quick-tools/quick-manifest-updater" target="_blank">MCCH Addon Updater</a> to update it.</p>' : ''}
+            <hr>Description:<br>${addon.description}
+        </div>
+        ${downloadLinks}
+    `;
+}
+
+function closeInfoDisplay() {
+    const itemInfo = document.getElementById('infoMenu');
+    itemInfo.style.display = 'none';
+    itemInfo.innerHTML = '';
+}
+
+/*
+const freenoads = document.getElementById('freenoads');
+const outdated = document.getElementById('outdated');
+
+if (updateNeeded) {
+    outdated.style.display = "flex";
+} else {
+    freenoads.style.display = "block";
+}
+*/
+
+
+displayAddons(addons);
+
+// Filter functionality
+const filterButtons = document.querySelectorAll('#addonsh6 h6');
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+        let filteredAddons;
+
+        if (filter === 'all') {
+            filteredAddons = addons;
+        } else {
+            filteredAddons = addons.filter(addon => addon.types.includes(filter));
+        }
+
+        displayAddons(filteredAddons);
+    });
+});
+    </script>
+</body>
+</html>
