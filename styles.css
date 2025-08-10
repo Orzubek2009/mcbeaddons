@@ -550,6 +550,32 @@
             transform: scale(0.98);
         }
 
+
+
+        .download-button3 {
+            justify-content: center;
+            align-items: center;
+            padding: 18px 5px;
+            border-radius: 8px;
+            background-color: #1abc9c;
+            color: white;
+            font-size: small;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounce 5s infinite;
+        }
+
+        .download-button3:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgb(8, 185, 182);
+        }
+
+        .download-button3:active {
+            transform: scale(0.98);
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
