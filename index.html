@@ -18,7 +18,7 @@
 
     <div class="content" style="padding-top: 50px;">
         <div class="addonsDisplay1">
-            <h4>Last Updated: 08/04/2025<br>Supported Version: 1.21.94</h4>
+            <h4>Last Updated: 08/10/2025<br>Supported Version: 1.21.100</h4>
             <h3 style="font-size: medium; background-color: rgb(106, 106, 106, 0.3); padding: 10px 20px; border-radius: 7px; margin-top: 4px;">Join the community:</h3>
 
             <div class="link-container">
@@ -251,21 +251,20 @@ function infoDisplay(addon) {
             const behaviorFile = `[B]${addonFile}`;
             const resourceFile = `[R]${addonFile}`;
             downloadLinks = `
-                <a href="${basePath}${behaviorFile}" target="_blank" class="download-button2" download>Download Behavior Pack</a>
-                <br><br><br>
-                <a href="${basePath}${resourceFile}" target="_blank" class="download-button2" download>Download Resource Pack</a>
+                <a href="${basePath}${behaviorFile}" target="_blank" class="download-button3" download>📁 Download Behavior</a>
+                <a href="${basePath}${resourceFile}" target="_blank" class="download-button3" download>🖼️ Download Resource</a>
             `;
         } else {
             // For single file addons (e.g., scripts) or explicitly prefixed files
             downloadLinks = `<a href="${basePath}${addonFile}" target="_blank" class="download-button2" download>
-                ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
-            </a>`;
+                            📦 ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+                            </a>`;
         }
     } else if (addon.download.startsWith('https')) {
         // External link
         downloadLinks = `<a href="${addon.download}" target="_blank" class="download-button2">
-            ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
-        </a>`;
+                        🔗 ${addon.outdated ? 'Download despite it being outdated' : 'Download'}
+                        </a>`;
     }
 
     itemInfo.innerHTML = `
