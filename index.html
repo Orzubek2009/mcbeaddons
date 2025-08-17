@@ -15,10 +15,10 @@
 <body>
     <h1>Minecraft Bedrock Addons</h1>
     <br><br><br>
-
+    <div id="blurBackground" class="blur"></div>
     <div class="content" style="padding-top: 50px;">
         <div class="addonsDisplay1">
-            <h4>Last Updated: 08/10/2025<br>Supported Version: 1.21.100</h4>
+            <h4>Last Updated: 08/16/2025<br>Supported Version: 1.21.101</h4>
             <h3 style="font-size: medium; background-color: rgb(106, 106, 106, 0.3); padding: 10px 20px; border-radius: 7px; margin-top: 4px;">Join the community:</h3>
 
             <div class="link-container">
@@ -32,7 +32,8 @@
                 </a>
             </div>
         </div>
-        <div id="infoMenu"></div>
+        <div id="infoMenu">
+        </div>
         <div class="addonsDisplay">
             <div id="outdated" class="video-button" style="border:4px solid rgba(200,0,0,1); background:rgba(250,0,0,1); padding:10px; align-items:center; text-align:center; justify-content:space-between;">
                 <img style="width:50px;" src="https://www.freeiconspng.com/thumbs/warning-icon-png/status-warning-icon-png-29.png">
@@ -44,10 +45,12 @@
             </div>
             <h5 id="addonsDisplay"></h5>
             <div id="addonsh6">
-                <h6 class="active" data-filter="all">All</h6>
-                <h6 data-filter="addon">Addons</h6>
-                <h6 data-filter="script">Scripts</h6>
-                <h6 data-filter="world">Worlds</h6>
+                <button class="search">🔍</button>
+                <input type="search" placeholder="Search Addons" class="searchBar">
+                <h6 class="active filter" data-filter="all">All</h6>
+                <h6 class="filter" data-filter="addon">Addons</h6>
+                <h6 class="filter" data-filter="script">Scripts</h6>
+                <h6 class="filter" data-filter="world">Worlds</h6>
             </div>
             <div id="addonsList"></div>
         </div>
@@ -57,7 +60,12 @@
     </div>
     <script src="./arrays/addons.js"></script>
     <script src="./arrays/authors.js"></script>
-    <script>
+
+
+
+
+
+<script>
 const updateNeeded = false;
 
 function getAddonParamsFromURL() {
@@ -177,7 +185,7 @@ function displayAddons(filteredAddons) {
             const author = authors.find(a => a.name === addon.author);
             if (author) {
                 const authorIcon = document.createElement('img');
-                authorIcon.classbellyName = 'author-icon';
+                authorIcon.className = 'author-icon';
                 authorIcon.src = author.icon;
                 authorIcon.alt = author.name;
                 authorIcon.style = "width: 20px; height: 20px; border-radius: 50%; margin-right: 10px;"
@@ -278,25 +286,85 @@ function infoDisplay(addon) {
         </div>
         ${downloadLinks}
     `;
+
+    document.getElementById('blurBackground').style.display = 'block';
+    document.body.style.overflowY = 'hidden';
 }
 
 function closeInfoDisplay() {
     const itemInfo = document.getElementById('infoMenu');
     itemInfo.style.display = 'none';
     itemInfo.innerHTML = '';
+    document.getElementById('blurBackground').style.display = 'none';
+    document.body.style.overflowY = 'scroll';
 }
+function setupSearchBar() {
+    const searchBar = document.querySelector('.searchBar');
+    const searchButton = document.querySelector('.search');
 
-/*
-const freenoads = document.getElementById('freenoads');
-const outdated = document.getElementById('outdated');
+    // Show search bar on hover over search button or search bar
+    searchButton.addEventListener('mouseenter', () => {
+        searchBar.style.display = 'block';
+    });
 
-if (updateNeeded) {
-    outdated.style.display = "flex";
-} else {
-    freenoads.style.display = "block";
+    searchBar.addEventListener('mouseenter', () => {
+        searchBar.style.display = 'block';
+    });
+
+    // Hide search bar when not focused or hovering over either search button or search bar
+    searchButton.addEventListener('mouseleave', () => {
+        if (document.activeElement !== searchBar && !searchBar.matches(':hover')) {
+            searchBar.style.display = 'none';
+        }
+    });
+
+    searchBar.addEventListener('mouseleave', () => {
+        if (document.activeElement !== searchBar && !searchButton.matches(':hover')) {
+            searchBar.style.display = 'none';
+        }
+    });
+
+    // Keep search bar visible when focused
+    searchBar.addEventListener('focus', () => {
+        searchBar.style.display = 'block';
+    });
+
+    // Hide search bar when it loses focus and mouse is not over search button or search bar
+    searchBar.addEventListener('blur', () => {
+        if (!searchButton.matches(':hover') && !searchBar.matches(':hover')) {
+            searchBar.style.display = 'none';
+        }
+    });
+
+    // Handle search functionality on button click
+    searchButton.addEventListener('click', () => {
+        const searchTerm = searchBar.value.trim().toLowerCase();
+        let filteredAddons = addons;
+
+        if (searchTerm) {
+            filteredAddons = addons.filter(addon =>
+                addon.name.toLowerCase().includes(searchTerm) ||
+                (addon.description && addon.description.toLowerCase().includes(searchTerm)) ||
+                (addon.author && addon.author.toLowerCase().includes(searchTerm))
+            );
+        }
+
+        // Reset filter buttons to show "All" as active
+        const filterButtons = document.querySelectorAll('#addonsh6 h6');
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('#addonsh6 h6[data-filter="all"]').classList.add('active');
+
+        // Display filtered addons
+        displayAddons(filteredAddons);
+    });
+
+    // Handle search on Enter key press
+    searchBar.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            searchButton.click();
+        }
+    });
 }
-*/
-
 
 displayAddons(addons);
 
@@ -318,9 +386,27 @@ filterButtons.forEach(button => {
             filteredAddons = addons.filter(addon => addon.types.includes(filter));
         }
 
+        // Apply search filter if search bar has a value
+        const searchBar = document.querySelector('.searchBar');
+        const searchTerm = searchBar.value.trim().toLowerCase();
+        if (searchTerm) {
+            filteredAddons = filteredAddons.filter(addon =>
+                addon.name.toLowerCase().includes(searchTerm) ||
+                (addon.description && addon.description.toLowerCase().includes(searchTerm)) ||
+                (addon.author && addon.author.toLowerCase().includes(searchTerm))
+            );
+        }
+
         displayAddons(filteredAddons);
     });
 });
-    </script>
+
+setupSearchBar();
+</script>
+
+
+
+
+
 </body>
 </html>
